@@ -72,7 +72,6 @@ public class CameraDaoImpl implements CameraDao {
 		try (Session session = sf.openSession()) {
 			Transaction trans = session.beginTransaction();
 			id.forEach(deleted -> {
-				//CameraEntity entity = session.get(CameraEntity.class, id);
 				session.delete(deleted);
 				session.flush();
 				System.out.println("delete the list   " + deleted);
