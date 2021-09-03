@@ -58,12 +58,29 @@ public class CameraDaoImpl implements CameraDao {
 	public void saveList(List<CameraEntity> camEntity) {
 		try (Session session = sf.openSession()) {
 			Transaction trans = session.beginTransaction();
-			camEntity.forEach(entity->{
+			camEntity.forEach(entity -> {
 				session.save(entity);
 				System.out.println(entity);
 			});
 			trans.commit();
 		}
+
+	}
+
+	@Override
+	public void deleteList(List<Integer> id) {
+		try (Session session = sf.openSession()) {
+			Transaction trans = session.beginTransaction();
+			id.forEach(deleted -> {
+				//CameraEntity entity = session.get(CameraEntity.class, id);
+				session.delete(deleted);
+				session.flush();
+				System.out.println("delete the list   " + deleted);
+
+			});
+			trans.commit();
+		}
+
 	}
 
 	
