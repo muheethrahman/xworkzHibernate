@@ -27,6 +27,7 @@ public static void main(String[] args) {
 		list.add(entity3);
 		
 		dao.saveList(list);
+	        dao.deleteList(list);
 		
 		
 	}
