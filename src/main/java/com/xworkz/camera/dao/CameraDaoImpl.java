@@ -71,11 +71,11 @@ public class CameraDaoImpl implements CameraDao {
 	public void deleteList(List<Integer> id) {
 		try (Session session = sf.openSession()) {
 			Transaction trans = session.beginTransaction();
-			id.forEach(deleted -> {
-				session.delete(deleted);
-				session.flush();
-				System.out.println("delete the list   " + deleted);
-
+			CameraEntity ce = session.get(CameraEntity.class, entity);
+				if(id.contains(entity)) {
+					session.delete(ce);
+					System.out.println(ce);
+				}
 			});
 			trans.commit();
 		}
